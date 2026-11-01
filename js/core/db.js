@@ -1,0 +1,8 @@
+const STORE='records';let dbPromise;function open(){if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{const req=indexedDB.open('toolbox',1);req.onupgradeneeded=()=>{const s=req.result.createObjectStore(STORE,{keyPath:'key'});s.createIndex('col','col');};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});return dbPromise;}
+async function run(mode,fn){const db=await open();return new Promise((resolve,reject)=>{const t=db.transaction(STORE,mode);const req=fn(t.objectStore(STORE));t.oncomplete=()=>resolve(req&&'result'in req?req.result:undefined);t.onerror=t.onabort=()=>reject(t.error);});}
+const newId=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);export async function dbAll(col){const rows=await run('readonly',(s)=>s.index('col').getAll(IDBKeyRange.only(col)));return rows.map((r)=>r.data);}
+export async function dbGet(col,id){const row=await run('readonly',(s)=>s.get(`${col}:${id}`));return row?row.data:undefined;}
+export async function dbPut(col,obj){const data={...obj,id:obj.id||newId()};await run('readwrite',(s)=>s.put({key:`${col}:${data.id}`,col,id:data.id,data}));return data;}
+export async function dbRemove(col,id){await run('readwrite',(s)=>s.delete(`${col}:${id}`));}
+export async function dbDump(){const rows=await run('readonly',(s)=>s.getAll());const out={};for(const r of rows)(out[r.col]||=[]).push(r.data);return out;}
+export async function dbClear(){await run('readwrite',(s)=>s.clear());}
