@@ -6,4 +6,4 @@ dup.forEach((e)=>back.delete(e));}
 return back.get(en);}
 export function tr(key,...args){let s;if(CJK.test(key)){if(lang==='zh')s=key;else{const en=LEGACY[key]??key;s=DICT?(DICT[en]??en):en;}}else s=DICT?(DICT[key]??key):key;if(s.includes('|')){const[one,other]=s.split('|');s=args.includes(1)&&other!==undefined?other:one;}
 return s.replace(/\{(\d+)\}/g,(_,i)=>args[i]??'');}
-document.documentElement.lang=locale;document.title='Cubbie';document.querySelector('meta[name="apple-mobile-web-app-title"]')?.setAttribute('content','Cubbie');
+document.documentElement.lang=locale;document.title='Peasmine';document.querySelector('meta[name="apple-mobile-web-app-title"]')?.setAttribute('content','Peasmine');
