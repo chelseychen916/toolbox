@@ -1,6 +1,6 @@
 {
-  "name": "我的工具箱",
-  "short_name": "工具箱",
+  "name": "Cubbie",
+  "short_name": "Cubbie",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
