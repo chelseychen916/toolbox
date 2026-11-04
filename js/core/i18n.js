@@ -1,5 +1,5 @@
 import{LANGS}from'./languages.js';import LEGACY from'./lang/legacy-zh.js';const KEY='toolbox-lang';export{LANGS};const IDS=LANGS.map((l)=>l.id);const CJK=/[\u4e00-\u9fff]/;function detect(){try{const s=localStorage.getItem(KEY);if(IDS.includes(s))return s;}catch{}
-const n=(navigator.language||'').toLowerCase();if(/^zh-(tw|hk|mo|hant)/.test(n))return'zh-TW';if(n.startsWith('zh'))return'zh';const short=n.slice(0,2);return IDS.includes(short)?short:'en';}
+return'en';}
 export const lang=detect();export const isZh=lang==='zh'||lang==='zh-TW';export const locale=LANGS.find((l)=>l.id===lang).locale;const DICT=lang==='en'?null:(await import(`./lang/${lang}.js`)).default;export function setLang(id){try{localStorage.setItem(KEY,id);}catch{}}
 let back;export function zhOf(en){if(!back){back=new Map();const dup=new Set();for(const[zh,v]of Object.entries(LEGACY)){const e=v.split('|')[0];if(back.has(e))dup.add(e);else back.set(e,zh);}
 dup.forEach((e)=>back.delete(e));}
