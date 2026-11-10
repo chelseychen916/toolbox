@@ -1,3 +1,3 @@
 # Peasmine
 
-构建好的成品，直接用浏览器打开 `index.html`（或通过 GitHub Pages）。数据只保存在你自己的浏览器里。
+构建好的成品（GitHub Pages）。根目录是介绍网站，`app/` 是产品本身。数据只保存在你自己的浏览器里。

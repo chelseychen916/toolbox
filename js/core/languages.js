@@ -1,1 +1,0 @@
-export const LANGS=[{id:'zh',name:'简体中文',locale:'zh-CN'},{id:'zh-TW',name:'繁體中文',locale:'zh-TW'},{id:'en',name:'English',locale:'en'},{id:'fr',name:'Français',locale:'fr'},{id:'es',name:'Español',locale:'es'},{id:'de',name:'Deutsch',locale:'de'},{id:'it',name:'Italiano',locale:'it'},{id:'ja',name:'日本語',locale:'ja'},{id:'ko',name:'한국어',locale:'ko'},];

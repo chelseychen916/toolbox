@@ -1,26 +1,119 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Peasmine</title>
+  <meta name="description" content="A little space of your own. Your thoughts, plans, and everyday moments, all connected. No account needed.">
+  <meta property="og:title" content="Peasmine">
+  <meta property="og:description" content="A little space of your own. Your thoughts, plans, and everyday moments, all connected.">
+  <meta property="og:image" content="https://peasmine.com/shots/og.jpg">
+  <meta property="og:type" content="website">
   <meta name="theme-color" content="#f3f2ec">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Peasmine">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="icons/icon-180.png">
-  <link rel="icon" href="icons/icon-192.png">
-  <script src="js/themes.js"></script>
+  <link rel="icon" href="app/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="app/icons/icon-180.png">
+  <script>if(matchMedia('(display-mode: standalone)').matches||navigator.standalone)location.replace('app/');</script>
+  <script src="app/js/themes.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="app/css/themes.css">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
-  <main id="app"></main>
-  <script type="module" src="js/app.js"></script>
+  <header class="top">
+    <a class="brand" href="./"><span class="logo" data-icon="peasmine" data-size="34"><img src="app/icons/peasmine.svg" alt="" width="34" height="34"></span>Peasmine</a>
+    <a class="btn small" href="app/">Open Peasmine</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>A little space of your own.</h1>
+        <p class="lead">Your thoughts, plans, and everyday moments, all connected.</p>
+        <div class="cta">
+          <a class="btn" href="app/">Open Peasmine</a>
+          <span class="soon">iOS app coming soon</span>
+        </div>
+      </div>
+      <figure class="phone"><img src="shots/home.webp" width="390" height="844" alt="The Peasmine home screen with the Worry box, Diary, Breathe, Little things and To-do."></figure>
+    </section>
+
+    <section class="step">
+      <div class="step-text">
+        <h2>Write once. It finds its place.</h2>
+        <p>Write the way you would talk. When you want, Save and sort spots the groceries, meals, reminders and worries in your note and offers to file each one where it belongs. You choose what to keep. Otherwise it stays a plain diary entry.</p>
+      </div>
+      <figure class="phone"><img src="shots/connect.webp" width="390" height="844" loading="lazy" alt="A diary note split into suggestions: groceries to the fridge, a meal, a reminder and a worry."></figure>
+    </section>
+
+    <section class="uses">
+      <h2>For the pieces of an ordinary day.</h2>
+      <div class="use">
+        <figure class="phone"><img src="shots/worry.webp" width="390" height="844" loading="lazy" alt="The Worry box with three worries and choices to act on each."></figure>
+        <div class="use-text">
+          <h3>The little things on your mind</h3>
+          <p>Put a worry in the box. Then decide: can you do something about it, or is it out of your hands? Turn the first kind into a to-do or a reminder. Set the second aside and look again in a couple of days.</p>
+        </div>
+      </div>
+      <div class="use">
+        <figure class="phone"><img src="shots/meals.webp" width="390" height="844" loading="lazy" alt="Meals: what you ate, what is in the fridge, and what you can cook."></figure>
+        <div class="use-text">
+          <h3>What you ate, and what is in the fridge</h3>
+          <p>Keep a light record of meals, see what is in the fridge, and find something to cook with it. Pets, kids, shopping and trips have their own small corners too.</p>
+        </div>
+      </div>
+      <div class="use">
+        <figure class="phone"><img src="shots/breathe.webp" width="390" height="620" loading="lazy" alt="Breathe: a soft circle, durations of 1, 3 or 5 minutes, and a start button."></figure>
+        <div class="use-text">
+          <h3>A moment to breathe</h3>
+          <p>One to five minutes of slow breathing with a soft sound. When you are stuck, draw one little thing to do: drink some water, open a window, stretch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rest">
+      <h2>The rest of life, in small pieces.</h2>
+      <ul class="tools">
+        <li><span data-icon="check" data-size="30"></span>To-do</li>
+        <li><span data-icon="clock" data-size="30"></span>Reminders</li>
+        <li><span data-icon="hourglass" data-size="30"></span>Countdown</li>
+        <li><span data-icon="calendar" data-size="30"></span>Calendar</li>
+        <li><span data-icon="bowl" data-size="30"></span>Meals and fridge</li>
+        <li><span data-icon="basket" data-size="30"></span>Shopping list</li>
+        <li><span data-icon="smile" data-size="30"></span>Mood</li>
+        <li><span data-icon="paw" data-size="30"></span>Pet</li>
+        <li><span data-icon="baby" data-size="30"></span>Child</li>
+        <li><span data-icon="flower" data-size="30"></span>Period tracker</li>
+        <li><span data-icon="strip" data-size="30"></span>Fertility tests</li>
+        <li><span data-icon="cross" data-size="30"></span>Health log</li>
+        <li><span data-icon="plane" data-size="30"></span>Trip planner</li>
+        <li><span data-icon="film" data-size="30"></span>Media log</li>
+        <li><span data-icon="shirt" data-size="30"></span>Wardrobe</li>
+        <li><span data-icon="case" data-size="30"></span>Work log</li>
+        <li><span data-icon="coin" data-size="30"></span>Expenses</li>
+        <li><span data-icon="chart" data-size="30"></span>Stats</li>
+        <li><span data-icon="cookie" data-size="30"></span>Fortune cookie</li>
+        <li><span data-icon="cat" data-size="30"></span>Cats and dogs</li>
+      </ul>
+    </section>
+
+    <section class="private">
+      <h2>Use it without an account.</h2>
+      <p>Your notes stay on your device by default. You never need to sign up to use Peasmine, and your records are yours to export.</p>
+      <a class="btn" href="app/">Open Peasmine</a>
+    </section>
+
+    <section class="about">
+      <h2>Pieces of mine. Peace of mind.</h2>
+      <p>Peasmine began as a place for all the little pieces of a life: the plans, the worries, the meals, the pets. Having somewhere for them brings a little more peace. It is here when you need it, and quiet when you do not.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Peasmine</span>
+    <a href="app/welcome.html">User guide</a>
+  </footer>
+  <script type="module">import{icon}from'./app/js/core/icons.js';document.querySelectorAll('[data-icon]').forEach((el)=>el.replaceChildren(icon(el.dataset.icon,+el.dataset.size,'doodle')));</script>
 </body>
 </html>

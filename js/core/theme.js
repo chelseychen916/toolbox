@@ -1,7 +1,0 @@
-import{tr}from'../core/i18n.js';import{dbGet,dbPut}from'./db.js';const CFG=window.CUBBIE_THEMES;export const THEMES=[{id:'auto',name:tr('Match system')},...CFG.themes.filter((t)=>t.dark).map((t)=>({...t,name:tr(t.name)})),...CFG.themes.filter((t)=>!t.dark).map((t)=>({...t,name:tr(t.name)})),];const KEY='toolbox-theme';const dark=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;export function getPref(){try{return localStorage.getItem(KEY)||'vintage';}catch{return'vintage';}}
-export const resolve=(pref)=>(pref!=='auto'&&CFG.themes.some((t)=>t.id===pref)?pref:dark&&dark.matches?CFG.auto.dark:CFG.auto.light);export function applyTheme(pref=getPref()){const id=resolve(pref);document.documentElement.dataset.theme=id;document.documentElement.dataset.mode=CFG.themes.find((t)=>t.id===id)?.dark?'dark':'light';const bg=getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();const meta=document.querySelector('meta[name="theme-color"]');if(meta&&bg)meta.setAttribute('content',bg);}
-export function setTheme(pref){try{localStorage.setItem(KEY,pref);}catch{}
-applyTheme(pref);dbPut('prefs',{id:'theme',value:pref}).catch(()=>{});}
-export async function restoreTheme(){const p=await dbGet('prefs','theme');if(p&&p.value){try{localStorage.setItem(KEY,p.value);}catch{}
-applyTheme(p.value);}}
-if(dark&&dark.addEventListener)dark.addEventListener('change',()=>{if(getPref()==='auto')applyTheme();});
