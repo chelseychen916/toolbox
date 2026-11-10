@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Peasmine – Welcome</title>
+  <meta name="description" content="Peasmine is a private, local-only toolbox for the small things you track every day.">
+  <link rel="icon" href="icons/icon-192.png">
+  <script src="js/themes.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .wl { max-width: 880px; margin: 0 auto; padding: calc(28px + env(safe-area-inset-top)) 20px calc(56px + env(safe-area-inset-bottom)); }
+    .wl-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .wl-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; }
+    .wl-nav a.pill { text-decoration: none; }
+    .wl-hero { text-align: center; padding: 56px 0 40px; }
+    .wl-logo { line-height: 0; margin-bottom: 18px; }
+    .wl-hero h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.12; margin: 0 0 14px; letter-spacing: -.01em; }
+    .wl-hero p { color: var(--muted); font-size: 18px; max-width: 520px; margin: 0 auto 26px; }
+    .wl-cta { display: inline-block; text-decoration: none; padding: 14px 28px; font-size: 17px; }
+    .wl-h2 { font-size: 26px; margin: 56px 0 6px; }
+    .wl-lead { color: var(--muted); margin: 0 0 20px; }
+    .wl-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; counter-reset: s; }
+    .wl-step { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 16px 58px; }
+    .wl-step::before { counter-increment: s; content: counter(s); position: absolute; left: 16px; top: 16px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; background: var(--accent-soft); color: var(--accent-ink); }
+    .wl-step b { display: block; margin-bottom: 2px; }
+    .wl-step span { color: var(--muted); font-size: 14px; }
+    .wl-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    @media (max-width: 760px) { .wl-steps, .wl-tabs { grid-template-columns: 1fr 1fr; } .wl-points { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .wl-steps, .wl-tabs { grid-template-columns: 1fr; } }
+    .wl-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .wl-point { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+    .wl-point b { display: block; font-size: 17px; margin-bottom: 4px; }
+    .wl-point span { color: var(--muted); font-size: 15px; }
+    .wl-tab { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+    .wl-tab .card-icon { margin-bottom: 10px; }
+    .wl-tab h3 { margin: 0 0 4px; font-size: 18px; }
+    .wl-tab p { margin: 0; color: var(--muted); font-size: 15px; }
+    .wl-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .wl-tool { display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+    button.wl-tool { text-align: left; width: 100%; position: relative; border-width: 2px; color: inherit; font: inherit; }
+    .wl-tool.on { border-color: var(--accent); background: var(--accent-faint); }
+    .wl-tool.on::after { content: '✓'; position: absolute; top: 8px; right: 12px; font-weight: 700; color: var(--accent-ink); }
+    .wl-tool .card-icon { width: 44px; height: 44px; margin: 0; border-radius: 13px; }
+    .wl-tool .card-name { font-size: 15px; }
+    .wl-tips { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .wl-tips li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+    .wl-tips b { color: var(--accent-ink); }
+    .wl-end { text-align: center; margin-top: 60px; }
+
+    .wl-bar { display: none; }
+    /* 手机：像 app 的引导页，一屏一块，左右滑动，底部固定「下一步」 */
+    @media (max-width: 640px) {
+      html, body { height: 100%; overflow: hidden; }
+      .wl { height: 100dvh; max-width: none; padding: 0; display: flex; flex-direction: column; }
+      .wl-nav { padding: calc(12px + env(safe-area-inset-top)) 16px 8px; flex: none; }
+      .wl-slides { flex: 1; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+      .wl-slides::-webkit-scrollbar { display: none; }
+      .slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow-y: auto; padding: 8px 16px 24px; box-sizing: border-box; }
+      .wl-hero { display: flex; flex-direction: column; justify-content: center; padding-top: 0; }
+      .wl-hero .wl-cta, .wl-end { display: none; }
+      .wl-h2 { margin: 12px 0 4px; font-size: 24px; }
+      .wl-steps, .wl-tabs, .wl-points { grid-template-columns: 1fr; }
+      .wl-tools { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .wl-tool { flex-direction: column; gap: 8px; }
+      .wl-bar { display: block; flex: none; padding: 10px 16px calc(14px + env(safe-area-inset-bottom)); background: var(--bg); border-top: 1px solid var(--line); }
+      .wl-dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; }
+      .wl-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); transition: all .2s; }
+      .wl-btns { display: flex; gap: 10px; }
+      .wl-btns .btn { min-height: 48px; }
+      #prev { flex: 1; }
+      #next { flex: 2; }
+      .wl-dots i.on { width: 22px; border-radius: 4px; background: var(--accent); }
+    }
+  </style>
+</head>
+<body>
+<div class="wl">
+  <nav class="wl-nav">
+    <div class="wl-brand" id="brand">Peasmine</div>
+    <a class="pill" id="skip" href="index.html">Open app</a>
+  </nav>
+
+  <div class="wl-slides" id="slides">
+  <section class="slide wl-hero">
+    <div class="wl-logo" id="logo"></div>
+    <h1>Just what you need,<br>nothing more.</h1>
+    <p>One quiet place for the small things in your days. No pile of apps, no noise.</p>
+    <a class="btn primary wl-cta" href="index.html">Open Peasmine</a>
+  </section>
+
+  <section class="slide">
+  <h2 class="wl-h2">Less, on purpose</h2>
+  <p class="wl-lead">What Peasmine is, and isn&rsquo;t.</p>
+  <div class="wl-points">
+    <div class="wl-point"><b>One app, not ten</b><span>Period, mood, meals, spending, to-dos: keep only the ones you use, all in the same place.</span></div>
+    <div class="wl-point"><b>Tools that talk to each other</b><span>Everything you log lands in one personal database, sorted by day. A meal, a mood and a purchase from the same afternoon sit side by side.</span></div>
+    <div class="wl-point"><b>Small is enough</b><span>A line, a tap, a half-thought. Jot things down as they happen. No streaks, no scores, no one watching.</span></div>
+    <div class="wl-point"><b>Private by design</b><span>Your records stay on your device. No account needed, no ads, no tracking.</span></div>
+  </div>
+  </section>
+
+  <section class="slide">
+  <h2 class="wl-h2">How it goes</h2>
+  <p class="wl-lead">A calm routine.</p>
+  <div class="wl-steps">
+    <div class="wl-step"><b>Choose your tools</b><span>Start with just the few you need. You can add or remove tools whenever your life changes.</span></div>
+    <div class="wl-step"><b>Note things as they happen</b><span>Open a tile, tap or type, and you&rsquo;re done in seconds. Fragments count.</span></div>
+    <div class="wl-step"><b>Step back now and then</b><span>Calendar and Stats pull it all together, so you can see how you&rsquo;ve really been doing.</span></div>
+  </div>
+  </section>
+
+  <section class="slide">
+  <h2 class="wl-h2">Where things are</h2>
+  <p class="wl-lead">Write on Home, look back everywhere else.</p>
+  <div class="wl-tabs" id="tabs"></div>
+
+  </section>
+
+  <section class="slide">
+  <h2 class="wl-h2">The tools</h2>
+  <p class="wl-lead">Tap to add the ones you need.</p>
+  <div class="wl-tools" id="tools"></div>
+
+  </section>
+
+  <section class="slide">
+  <h2 class="wl-h2">Good to know</h2>
+  <ul class="wl-tips">
+    <li><b>Make Home yours.</b> Press and hold any tile, or tap Edit home. Drag to reorder, resize, or put away what you don&rsquo;t use. Put-away tools keep their records and can come back from Add a tool.</li>
+    <li><b>Need something else?</b> Tap Add a tool and say it in a sentence, like &ldquo;how much water I drink&rdquo;. Peasmine makes a small tracker for it.</li>
+    <li><b>Let the diary do the sorting.</b> Write the way you think. When you save, Peasmine shows where each bit would go, and nothing is filed until you confirm.</li>
+    <li><b>Make it feel like you.</b> 6 colour themes, 4 icon styles (Doodle, Pixel, Line, Sticker) and 8 languages, all in Settings.</li>
+    <li><b>Keep a copy.</b> Because your data lives only on your device, export a backup from Settings now and then, and before switching devices.</li>
+  </ul>
+  <div class="wl-end">
+    <a class="btn primary wl-cta" href="index.html">Open Peasmine</a>
+  </div>
+  </section>
+  </div>
+
+  <div class="wl-bar">
+    <div class="wl-dots" id="dots"></div>
+    <div class="wl-btns"><button class="btn ghost" id="prev">Back</button><button class="btn primary" id="next">Next</button></div>
+  </div>
+</div>
+
+<script type="module">import{icon}from'./js/core/icons.js';import builtin,{optional}from'./js/tools/index.js';import{loadPicked,savePicked}from'./js/core/pick.js';const el=(tag,cls,...kids)=>{const n=document.createElement(tag);if(cls)n.className=cls;n.append(...kids.filter(Boolean));return n;};const iconBox=(name,size=36)=>el('div','card-icon',icon(name,size,'doodle'));document.getElementById('brand').prepend(icon('peasmine',28,'doodle'));document.getElementById('logo').append(icon('peasmine',96,'doodle'));const tabs=[['house','Home','Your tools as tiles. Tap one and jot something down.'],['calendar','Calendar','Pick a day and see everything from that day in one view, whichever tool it came from.'],['chart','Stats','The big picture: how your recent weeks have gone, across mood, habits, spending and more.'],['gear','Settings','Backup and restore, language, theme, icon style, and this guide.'],];document.getElementById('tabs').append(...tabs.map(([ic,name,text])=>el('div','wl-tab',iconBox(ic,34),el('h3','',name),el('p','',text))));const chosen=await loadPicked(builtin,optional).catch(()=>new Set());let saving=Promise.resolve();const all=[...builtin,...optional];document.getElementById('tools').append(...all.map((t)=>{const card=el('button','wl-tool'+(chosen.has(t.id)?' on':''),iconBox(t.icon,28),el('div','',el('div','card-name',t.name),el('div','card-sub',t.description||t.why)));card.setAttribute('aria-pressed',chosen.has(t.id));card.addEventListener('click',()=>{chosen.has(t.id)?chosen.delete(t.id):chosen.add(t.id);card.classList.toggle('on',chosen.has(t.id));card.setAttribute('aria-pressed',chosen.has(t.id));saving=saving.then(()=>savePicked(chosen,builtin,optional)).catch(()=>{});});return card;}));const slides=document.getElementById('slides'),dots=document.getElementById('dots'),next=document.getElementById('next');const from=new URLSearchParams(location.search).get('from');const pages=[...slides.children];pages.forEach(()=>dots.append(document.createElement('i')));let cur=0;const paint=()=>{cur=Math.round(slides.scrollLeft/slides.clientWidth);[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));next.textContent=cur===pages.length-1?(from?'Done':'Open Peasmine'):'Next';prev.style.visibility=cur===0&&!from?'hidden':'';};slides.addEventListener('scroll',paint,{passive:true});const back=from==='settings'?'index.html#/settings':'index.html';const prev=document.getElementById('prev'),skip=document.getElementById('skip');if(from){skip.textContent='Back';skip.href=back;}
+next.addEventListener('click',()=>{if(cur===pages.length-1)location.href=back;else slides.scrollTo({left:(cur+1)*slides.clientWidth,behavior:'smooth'});});prev.addEventListener('click',()=>{if(cur===0)location.href=back;else slides.scrollTo({left:(cur-1)*slides.clientWidth,behavior:'smooth'});});paint();</script>
+</body>
+</html>
