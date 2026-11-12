@@ -13,6 +13,7 @@
   <link rel="icon" href="app/icons/icon-192.png">
   <link rel="apple-touch-icon" href="app/icons/icon-180.png">
   <script>if(matchMedia('(display-mode: standalone)').matches||navigator.standalone)location.replace('app/');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T2L5GRGF');</script>
   <script src="app/js/themes.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +22,7 @@
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2L5GRGF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="top">
     <a class="brand" href="./"><span class="logo" data-icon="peasmine" data-size="34"><img src="app/icons/peasmine.svg" alt="" width="34" height="34"></span>Peasmine</a>
     <a class="btn small" href="app/">Open Peasmine</a>
@@ -48,27 +50,35 @@
     </section>
 
     <section class="uses">
-      <h2>For the pieces of an ordinary day.</h2>
-      <div class="use">
-        <figure class="phone"><img src="shots/worry.webp" width="390" height="844" loading="lazy" alt="The Worry box with three worries and choices to act on each."></figure>
-        <div class="use-text">
-          <h3>The little things on your mind</h3>
-          <p>Put a worry in the box. Then decide: can you do something about it, or is it out of your hands? Turn the first kind into a to-do or a reminder. Set the second aside and look again in a couple of days.</p>
+      <div class="uses-head">
+        <h2>For the pieces of an ordinary day.</h2>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Previous">‹</button>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Next">›</button>
         </div>
       </div>
-      <div class="use">
-        <figure class="phone"><img src="shots/meals.webp" width="390" height="844" loading="lazy" alt="Meals: what you ate, what is in the fridge, and what you can cook."></figure>
-        <div class="use-text">
-          <h3>What you ate, and what is in the fridge</h3>
-          <p>Keep a light record of meals, see what is in the fridge, and find something to cook with it. Pets, kids, shopping and trips have their own small corners too.</p>
-        </div>
-      </div>
-      <div class="use">
-        <figure class="phone"><img src="shots/breathe.webp" width="390" height="620" loading="lazy" alt="Breathe: a soft circle, durations of 1, 3 or 5 minutes, and a start button."></figure>
-        <div class="use-text">
-          <h3>A moment to breathe</h3>
-          <p>One to five minutes of slow breathing with a soft sound. When you are stuck, draw one little thing to do: drink some water, open a window, stretch.</p>
-        </div>
+      <div class="rail" id="rail">
+        <article class="use">
+          <figure class="phone"><img src="shots/worry.webp" width="390" height="844" loading="lazy" alt="The Worry box with three worries and choices to act on each."></figure>
+          <div class="use-text">
+            <h3>The little things on your mind</h3>
+            <p>Put a worry in the box, then decide if you can do something about it. Turn it into a to-do, or set it aside and look again in a couple of days.</p>
+          </div>
+        </article>
+        <article class="use">
+          <figure class="phone"><img src="shots/meals.webp" width="390" height="844" loading="lazy" alt="Meals: what you ate, what is in the fridge, and what you can cook."></figure>
+          <div class="use-text">
+            <h3>What you ate, and what is in the fridge</h3>
+            <p>Keep a light record of meals, see what is in the fridge, and find something to cook with it. Pets, kids, shopping and trips have their own small corners too.</p>
+          </div>
+        </article>
+        <article class="use">
+          <figure class="phone"><img src="shots/breathe.webp" width="390" height="844" loading="lazy" alt="Breathe: a soft circle, durations of 1, 3 or 5 minutes, and a start button."></figure>
+          <div class="use-text">
+            <h3>A moment to breathe</h3>
+            <p>One to five minutes of slow breathing with a soft sound. When you are stuck, draw one little thing to do: drink some water, open a window, stretch.</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -78,7 +88,6 @@
         <li><span data-icon="check" data-size="30"></span>To-do</li>
         <li><span data-icon="clock" data-size="30"></span>Reminders</li>
         <li><span data-icon="hourglass" data-size="30"></span>Countdown</li>
-        <li><span data-icon="calendar" data-size="30"></span>Calendar</li>
         <li><span data-icon="bowl" data-size="30"></span>Meals and fridge</li>
         <li><span data-icon="basket" data-size="30"></span>Shopping list</li>
         <li><span data-icon="smile" data-size="30"></span>Mood</li>
@@ -92,15 +101,25 @@
         <li><span data-icon="shirt" data-size="30"></span>Wardrobe</li>
         <li><span data-icon="case" data-size="30"></span>Work log</li>
         <li><span data-icon="coin" data-size="30"></span>Expenses</li>
-        <li><span data-icon="chart" data-size="30"></span>Stats</li>
         <li><span data-icon="cookie" data-size="30"></span>Fortune cookie</li>
         <li><span data-icon="cat" data-size="30"></span>Cats and dogs</li>
       </ul>
     </section>
 
+    <section class="look">
+      <div class="look-text">
+        <h2>Then look back on all of it.</h2>
+        <p>Calendar puts everything you recorded on the day it happened. Stats shows how the week went: good days, diary days, to-dos finished, moments to breathe. They only read what you have already written, and never ask you to add more.</p>
+      </div>
+      <div class="look-phones">
+        <figure class="phone"><img src="shots/calendar.webp" width="390" height="844" loading="lazy" alt="The Calendar: a month with small colored dots for moods, diary notes, to-dos and reminders on each day."></figure>
+        <figure class="phone"><img src="shots/stats.webp" width="390" height="844" loading="lazy" alt="Stats for the week: good days, down days, diary days and to-dos finished, compared with last week."></figure>
+      </div>
+    </section>
+
     <section class="private">
       <h2>Use it without an account.</h2>
-      <p>Your notes stay on your device by default. You never need to sign up to use Peasmine, and your records are yours to export.</p>
+      <p>Your notes stay on your device by default. You never need to sign up to use Peasmine, and your records are yours to export. This page counts visits anonymously; the app itself has no tracking.</p>
       <a class="btn" href="app/">Open Peasmine</a>
     </section>
 
@@ -112,8 +131,12 @@
 
   <footer>
     <span>Peasmine</span>
-    <a href="app/welcome.html">User guide</a>
+    <span class="foot-links">
+      <a href="app/welcome.html">User guide</a>
+      <a href="mailto:hello@peasmine.com">hello@peasmine.com</a>
+    </span>
   </footer>
+  <script>{const rail=document.getElementById('rail');document.querySelectorAll('.rail-btn').forEach((b)=>b.addEventListener('click',()=>{const card=rail.querySelector('.use');rail.scrollBy({left:b.dataset.dir*(card.offsetWidth+32),behavior:'smooth'});}));}</script>
   <script type="module">import{icon}from'./app/js/core/icons.js';document.querySelectorAll('[data-icon]').forEach((el)=>el.replaceChildren(icon(el.dataset.icon,+el.dataset.size,'doodle')));</script>
 </body>
 </html>
